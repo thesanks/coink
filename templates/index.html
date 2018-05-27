@@ -1,18 +1,23 @@
-<h2>Currency</h2>
+<h1>Coink!</h1>
+<h2>Currency converter</h2>
         <form>
-                from: <select name="currency_have">
-                        {% for currency in currencies %}
-                            <option value="{{currency}}" {{'selected="selected"' if currency_have==currency}}>{{currency}}</option>
-                        {% endfor %}                      
-                      </select>
+            
+            <input type="number" name="quantity" placeholder='enter amount'>                      
+            
+            You have: 
+            <select name="currency_have">
+                {% for currency in currencies %}
+                    <option value="{{currency}}" {{'selected="selected"' if currency_have==currency}}>{{currency}}</option>
+                {% endfor %}                      
+            </select>
 
-                to: <select name="currency_want">
-                    {% for currency in currencies %}
-                        <option value="{{currency}}" {{'selected="selected"' if currency_want==currency}}>{{currency}}</option>
-                    {% endfor %}                     
-
-                    </select>
-                <input type="submit" value="Submit">
+            You want: 
+            <select name="currency_want">
+                {% for currency in currencies %}
+                    <option value="{{currency}}" {{'selected="selected"' if currency_want==currency}}>{{currency}}</option>
+                {% endfor %}                     
+            </select>
+            <input type="submit" value="Convert">
         </form>
         <br>
-        1 {{currency_have}} = {{currency_want}} {{rate}}
+        {{ conversion }}
