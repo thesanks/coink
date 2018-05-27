@@ -1,23 +1,26 @@
-<h1>Coink!</h1>
-<h2>Currency converter</h2>
-        <form>
-            
-            <input type="number" name="quantity" placeholder='enter amount'>                      
-            
-            You have: 
-            <select name="currency_have">
-                {% for currency in currencies %}
-                    <option value="{{currency}}" {{'selected="selected"' if currency_have==currency}}>{{currency}}</option>
-                {% endfor %}                      
-            </select>
+{% extends "bootstrap/base.html" %} 
 
-            You want: 
-            <select name="currency_want">
-                {% for currency in currencies %}
-                    <option value="{{currency}}" {{'selected="selected"' if currency_want==currency}}>{{currency}}</option>
-                {% endfor %}                     
-            </select>
-            <input type="submit" value="Convert">
-        </form>
-        <br>
-        {{ conversion }}
+{% block content %}
+
+<div class="container">
+    <h1>Coink!</h1>
+    <h2>Currency converter</h2>
+    <form>
+
+        <input type="number" name="quantity" placeholder='enter amount'> You have:
+        <select name="currency_have">
+                    {% for currency in currencies %}
+                        <option value="{{currency}}" {{'selected="selected"' if currency_have==currency}}>{{currency}}</option>
+                    {% endfor %}                      
+                </select> You want:
+        <select name="currency_want">
+                    {% for currency in currencies %}
+                        <option value="{{currency}}" {{'selected="selected"' if currency_want==currency}}>{{currency}}</option>
+                    {% endfor %}                     
+                </select>
+        <input type="submit" value="Convert">
+    </form>
+    <br> {{'%0.2f'| format(conversion|float)}} {{ currency_want }}
+</div>
+
+{% endblock %}

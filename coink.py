@@ -1,8 +1,16 @@
 from flask import Flask, request, render_template
 import json
 import requests
+from flask_bootstrap import Bootstrap
+
 
 app = Flask(__name__)
+Bootstrap(app)
+
+  
+  
+# app = Flask(__name__)
+# # bootstrap = Bootstrap(app)
 
 URL = "https://openexchangerates.org//api/latest.json?app_id=3792aac73c0d4da982217fcfbaf18cce"
 
